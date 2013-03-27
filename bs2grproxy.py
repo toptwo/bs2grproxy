@@ -3,7 +3,7 @@
 # Please use wisely
 
 import wsgiref.handlers, logging, zlib, re, traceback, logging, sys
-from google.appengine.ext import webapp
+import webapp2 as webapp
 from google.appengine.api import urlfetch
 from google.appengine.api import urlfetch_errors
 from google.appengine.api import memcache
@@ -220,9 +220,8 @@ class BS2GRProxy(webapp.RequestHandler):
                 if resp.headers[header].lower().find("text") == -1:
                     # not text
                     text_content = False
-
+            
         self.response.out.write(resp.content)
-        
 
     def post(self):
         return self.process(False)

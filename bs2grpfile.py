@@ -71,8 +71,8 @@ class BS2GRPFile(db.Model):
         return False
 
     def to_string_io(self, io):
-        for i in self.units:
-            io.write(i)
+        decodedi = "".join(map(str, self.units))
+        io.write(decodedi)
 
     def from_string(self, content):
         r = 0
